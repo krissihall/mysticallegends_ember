@@ -1,0 +1,95 @@
+//** Use this if you need to make the padding of an element use the responsive grid padding values
+reponsive-padding()
+  padding-left $gutter-xs-padding
+  padding-right $gutter-xs-padding
+
+  +media('sm-only')
+    padding-left $gutter-sm-padding
+    padding-right $gutter-sm-padding
+
+  +media('md-only')
+    padding-left $gutter-md-padding
+    padding-right $gutter-md-padding
+
+  +media('lg-only')
+    padding-left $gutter-lg-padding
+    padding-right $gutter-lg-padding
+
+row-responsive-margin()
+  margin-left -($gutter-xs-padding)
+  margin-right -($gutter-xs-padding)
+
+  +media('sm-only')
+    margin-left -($gutter-sm-padding)
+    margin-right -($gutter-sm-padding)
+
+  +media('md-only')
+    margin-left -($gutter-md-padding)
+    margin-right -($gutter-md-padding)
+
+  +media('lg-only')
+    margin-left -($gutter-lg-padding)
+    margin-right -($gutter-lg-padding)
+
+transition(args...)
+  -o-transition args
+  -ms-transition args
+  -webkit-transition args
+  transition args
+
+opacity(n)
+  -khtml-opacity n
+  -moz-opacity n
+  opacity n
+  if support-for-ie
+    -ms-filter unquote('"progid:DXImageTransform.Microsoft.Alpha(Opacity=' + round(n * 100) + ')"')
+    filter unquote('alpha(opacity=' + round(n * 100) + ')')
+
+translates(xAxis, yAxis)
+  -o-transform translate(xAxis, yAxis)
+  -ms-transform translate(xAxis, yAxis)
+  -webkit-transform translate(xAxis, yAxis)
+  transform translate(xAxis, yAxis)
+
+clearfix()
+  &:before,
+  &:after
+    content " "
+    display table
+  &:after
+    clear both
+
+box-sizing(type = border-box)
+  -webkit-box-sizing type
+  -moz-box-sizing type
+  box-sizing type
+
+box-shadow(params = 0 0 0 2px #000 inset)
+  -webkit-box-shadow params
+  -moz-box-shadow params
+  box-shadow params
+
+box-shadow-one-side(side = bottom, color = #000, alpha = 71)
+  opacity = (alpha / 100)
+  if 'top' in side
+    box-shadow(0 -10px 19px -9px rgba(color, opacity))
+  if 'bottom' in side
+    box-shadow(0 10px 19px -9px rgba(color, opacity))
+  if 'left' in side
+    box-shadow(-10px 0 19px -9px rgba(color, opacity))
+  if 'right' in side
+    box-shadow(10px 0 19px -9px rgba(color, opacity))
+
+remove-box-shadow()
+  -webkit-box-shadow none
+  -moz-box-shadow none
+  box-shadow none
+
+// Converts em value of nested element based on parent base-font-size.
+// Added as of AEO-Bootstrap v0.1.4:
+//    refer to AEO-Bootstrap documentation for more informaiton.
+font-em-reset(parent, target-size)
+  $new-font-base = unit((parent * $font-base), px)
+  $target-size-in-px = unit((target-size * $font-base), px)
+
+  font-size unit(($target-size-in-px / $new-font-base), em)

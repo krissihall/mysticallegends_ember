@@ -1,0 +1,31 @@
+/* Stylus with global files: variables like color etc. */
+@import "global/variables"
+
+/* Stylus mixins. */
+@import "global/mixins"
+
+/* Stylus media query helper mixin */
+@import "global/media-query-helper"
+
+/* Global typography styles */
+@import "global/typography"
+
+/* Global layout styles */
+@import "global/layout"
+
+/*
+ * Styles for components, modules, and pages.
+ * Pre-import individual items if necessary to govern loading order.
+ */
+
+@import "components/*"
+
+@import "global/*"
+
+@import "templates/*"
+
+@import "shared/*"
+
+
+// Here we call all the cached styles using +media mixin
+apply_media_cache()

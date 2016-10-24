@@ -3,6 +3,7 @@
 module.exports = function(environment) {
   var ENV = {
     modulePrefix: 'mysticallegends',
+    podModulePrefix: 'mysticallegends/pods',
     environment: environment,
     baseURL: '/',
     locationType: 'auto',
